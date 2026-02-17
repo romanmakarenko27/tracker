@@ -8,6 +8,7 @@ import { SpendingOverTime } from "@/components/dashboard/SpendingOverTime";
 import { RecentExpenses } from "@/components/dashboard/RecentExpenses";
 import { useExpenses } from "@/hooks/useExpenses";
 import { calculateSummary } from "@/lib/analytics";
+import { exportExpensesToCsv } from "@/lib/exportCsv";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
@@ -18,6 +19,13 @@ export default function DashboardPage() {
   return (
     <div>
       <Header title="Dashboard">
+        <Button
+          variant="secondary"
+          onClick={() => exportExpensesToCsv(expenses)}
+          disabled={expenses.length === 0}
+        >
+          Export Data
+        </Button>
         <Link href="/expenses/new">
           <Button>Add Expense</Button>
         </Link>
