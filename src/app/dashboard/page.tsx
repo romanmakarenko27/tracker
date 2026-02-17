@@ -1,0 +1,36 @@
+"use client";
+
+import { useMemo } from "react";
+import { Header } from "@/components/layout/Header";
+import { SummaryCards } from "@/components/dashboard/SummaryCards";
+import { SpendingByCategory } from "@/components/dashboard/SpendingByCategory";
+import { SpendingOverTime } from "@/components/dashboard/SpendingOverTime";
+import { RecentExpenses } from "@/components/dashboard/RecentExpenses";
+import { useExpenses } from "@/hooks/useExpenses";
+import { calculateSummary } from "@/lib/analytics";
+import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+
+export default function DashboardPage() {
+  const { expenses, isLoaded } = useExpenses();
+  const summary = useMemo(() => calculateSummary(expenses), [expenses]);
+
+  return (
+    <div>
+      <Header title="Dashboard">
+        <Link href="/expenses/new">
+          <Button>Add Expense</Button>
+        </Link>
+      </Header>
+
+      <SummaryCards summary={summary} isLoaded={isLoaded} />
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <SpendingByCategory categoryTotals={summary.categoryTotals} />
+        <SpendingOverTime dailyTotals={summary.dailyTotals} />
+      </div>
+
+      <RecentExpenses expenses={expenses} />
+    </div>
+  );
+}
