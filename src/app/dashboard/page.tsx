@@ -17,7 +17,7 @@ export default function DashboardPage() {
 
   return (
     <div>
-      <Header title="Dashboard">
+      <Header title="Dashboard" subtitle={new Date().toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}>
         <Link href="/exports">
           <Button variant="secondary">
             <span className="flex items-center gap-2">

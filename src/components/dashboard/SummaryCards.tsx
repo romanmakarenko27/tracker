@@ -10,10 +10,10 @@ interface SummaryCardsProps {
 }
 
 const cards = [
-  { key: "totalSpent" as const, label: "Total Spent", format: formatCurrency },
-  { key: "expenseCount" as const, label: "Expenses", format: (v: number) => v.toString() },
-  { key: "averageExpense" as const, label: "Average", format: formatCurrency },
-  { key: "topCategory" as const, label: "Top Category", format: (v: string) => v },
+  { key: "totalSpent" as const, label: "Total Spent", format: formatCurrency, accent: "border-l-indigo-500" },
+  { key: "expenseCount" as const, label: "Expenses", format: (v: number) => v.toString(), accent: "border-l-emerald-500" },
+  { key: "averageExpense" as const, label: "Average", format: formatCurrency, accent: "border-l-amber-500" },
+  { key: "topCategory" as const, label: "Top Category", format: (v: string) => v, accent: "border-l-rose-500" },
 ];
 
 export function SummaryCards({ summary, isLoaded }: SummaryCardsProps) {
@@ -35,7 +35,7 @@ export function SummaryCards({ summary, isLoaded }: SummaryCardsProps) {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
       {cards.map((card) => (
-        <Card key={card.key} className="p-5">
+        <Card key={card.key} className={`p-5 border-l-4 ${card.accent}`}>
           <p className="text-sm font-medium text-gray-500 mb-1">{card.label}</p>
           <p className="text-2xl font-bold text-gray-900">
             {card.key === "topCategory"
