@@ -29,7 +29,7 @@ export function RecentExpenses({ expenses }: RecentExpensesProps) {
         ) : (
           <div className="space-y-3">
             {recent.map((expense) => (
-              <div key={expense.id} className="flex items-center justify-between">
+              <div key={expense.id} className="flex items-center justify-between p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
                     <p className="text-sm font-medium text-gray-900 truncate">{expense.description}</p>

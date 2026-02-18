@@ -32,6 +32,7 @@ export function SpendingByCategory({ categoryTotals }: SpendingByCategoryProps) 
     <Card>
       <CardHeader>
         <h2 className="text-base font-semibold text-gray-900">Spending by Category</h2>
+        <p className="text-sm text-gray-500">Breakdown by expense type</p>
       </CardHeader>
       <CardContent>
         <div className="h-64">
