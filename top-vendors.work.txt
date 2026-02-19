@@ -1,0 +1,38 @@
+## Top Vendors Feature - Work Summary
+
+### What was implemented
+A new "Top Vendors" page at /top-vendors that displays a ranked list of vendors
+(grouped by expense description, case-insensitive) sorted by total spending. Each row shows:
+- Rank number (in a circular badge)
+- Vendor name (from the first occurrence of the description)
+- Expense count
+- Most common category (shown as a colored Badge)
+- Total amount (formatted as currency)
+
+The page includes:
+- Loading skeleton (5 animated placeholder rows) while data loads from localStorage
+- Empty state with building icon and call-to-action to add first expense
+- Header with "Back to Dashboard" button
+- Vendor count display in the card header
+- Case-insensitive grouping via .toLowerCase().trim() normalization
+
+### Files created/modified
+1. **Created:** src/app/top-vendors/page.tsx - Main page component with aggregateVendors() logic
+2. **Modified:** src/components/layout/Sidebar.tsx - Added "Top Vendors" nav item with building icon
+3. **Modified:** src/components/layout/MobileNav.tsx - Added "Vendors" nav item (short label for mobile)
+
+### Dependencies added
+None - uses only existing project dependencies.
+
+### Testing approach
+- npm run build: PASSED (compiled successfully, 0 errors)
+- npm run lint: PASSED (no ESLint warnings or errors)
+- Note: Fixed a TypeScript Map iteration issue (downlevelIteration) by using Array.from()
+
+### Integration notes
+- Branch: feature/top-vendors
+- Worktree: D:/Education/expense-tracker-top-vendors
+- Commit: f80acbb - "Add top vendors page with nav links"
+- No conflicts expected with main branch (only adds new files + appends to nav arrays)
+- When merging with top-categories feature, Sidebar.tsx and MobileNav.tsx will need
+  conflict resolution since both features append to the same navItems arrays
